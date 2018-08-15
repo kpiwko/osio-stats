@@ -36,13 +36,13 @@ const handler = function(argv) {
           fields: [{
             label: 'Name',
             value: 'name'
-          }, {
+          }, /*{
             label: 'ID',
             value: 'id',
           }, {
             label: 'Parent ID',
             value: 'parent'
-          }, {
+          },*/ {
             label: 'Total WIs',
             value: 'total'
           }, {
@@ -68,9 +68,9 @@ const handler = function(argv) {
       // pretty print output
       else {
         const header = [
-          { value: 'Name'},
+          { value: 'Name'},/*
           { value: 'ID'},
-          { value: 'Parent ID'},
+          { value: 'Parent ID'},*/
           { value: 'Total WIs'},
           { value: 'WIs'},
           { value: 'w/o SPs'},
@@ -81,7 +81,7 @@ const handler = function(argv) {
         const table = Table(header, [], {defaultValue: ''})
         // transform data
         iterations.forEach(iteration => {
-          table.push([iteration.name, iteration.id, iteration.parent, iteration.total, iteration.workitems, 
+          table.push([iteration.name, /*iteration.id, iteration.parent,*/ iteration.total, iteration.workitems, 
             iteration.workItemsWithoutSPs, iteration.workItemsWithoutACs, iteration.spComplete, iteration.spTotal])
         })
   
