@@ -52,18 +52,8 @@ Options:
 `osio-stats iterations --include-item-types Story`
 
 4. Display only columns we are interested in
-```
-osio-stats iterations --include-item-types Story --columns name wis woSPs
 
-  ┌──────────────┬───────┬───────────────┐
-  │     Name           │ # WIs    │ # WIs w/o SPs       │
-  ├──────────────┼───────┼───────────────┤
-  │   Jonquil          │  18      │      12             │
-  ├──────────────┼───────┼───────────────┤
-  │   Knapweed         │   2      │       2             │
-  ├──────────────┼───────┼───────────────┤
-  ...
-```
+`osio-stats iterations --include-item-types Story --columns name wis woSPs`
 
 5. Output as tab separated values
 ```
