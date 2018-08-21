@@ -1,6 +1,6 @@
 {
   "name": "osio-stats",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Stats for OpenShift.io project(s) gathered from Planner",
   "main": "index.js",
   "bin": {
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/openshiftio/openshiftio-stats#readme",
   "dependencies": {
     "@types/request": "^2.47.1",
+    "chalk": "^2.4.1",
     "cli-table": "^0.3.1",
     "flat": "^4.1.0",
     "json2csv": "^4.2.1",

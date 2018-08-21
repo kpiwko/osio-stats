@@ -3,6 +3,7 @@
 const process = require('process')
 const Table = require('tty-table')
 const json2csv = require('json2csv')
+const chalk = require('chalk')
 const Planner = require('../lib/planner')
 
 
@@ -13,7 +14,16 @@ const builder = function (yargs) {
   return yargs
     .usage(`usage: $0 iterations  [options]
 
-Queries iterations in selected spaces and shows high level statistics`)
+Queries iterations in selected spaces and shows high level statistics
+Available columns (select by providing [id] in --columns option): 
+
+${Planner.COLUMNS.map(c => {return '['+c.id+']\t\t' + chalk.bold(c.title) + ' - ' + c.description}).join('\n')}`)
+    .option('columns', {
+      describe: 'Columns',
+      type: 'array',
+      default: Planner.COLUMNS.map(column => column.id),
+      defaultDescription: `Include all columns: ${Planner.COLUMNS.map(column => column.id).join(', ')}`
+    })
     .help('help')
     .wrap(null)
 }
@@ -31,60 +41,39 @@ const handler = function(argv) {
         return a.name.localeCompare(b.name)
       })
 
+      const columns = Planner.COLUMNS.filter(column => {
+        return argv.columns.includes(column.id)
+      })
+
       if(argv.tsv) {
+        const fields = columns.map(column => {
+          return {
+            label: column.title,
+            value: column.id
+          }
+        })
         const parser = new json2csv.Parser({
-          fields: [{
-            label: 'Name',
-            value: 'name'
-          }, /*{
-            label: 'ID',
-            value: 'id',
-          }, {
-            label: 'Parent ID',
-            value: 'parent'
-          },*/ {
-            label: 'Total WIs',
-            value: 'total'
-          }, {
-            label: 'WIs',
-            value: 'workitems'
-          }, { 
-            label: 'w/o SPs',
-            value: 'workItemsWithoutSPs'
-          }, { 
-            label: 'w/o ACs',
-            value: 'workItemsWithoutACs'
-          }, { 
-            label: 'completed SPs',
-            value: 'spComplete'
-          }, { 
-            label: 'total SPs',
-            value: 'spTotal'
-          }],
+          fields: fields,
           delimiter: '\t'
         })
         console.log(parser.parse(iterations))
       }
       // pretty print output
       else {
-        const header = [
-          { value: 'Name'},/*
-          { value: 'ID'},
-          { value: 'Parent ID'},*/
-          { value: 'Total WIs'},
-          { value: 'WIs'},
-          { value: 'w/o SPs'},
-          { value: 'w/o ACs'},
-          { value: 'completed SPs'},
-          { value: 'total SPs'}
-        ]
+        const header = columns.map(column => {
+          return {
+            value: column.title
+          }
+        })
         const table = Table(header, [], {defaultValue: ''})
         // transform data
         iterations.forEach(iteration => {
-          table.push([iteration.name, /*iteration.id, iteration.parent,*/ iteration.total, iteration.workitems, 
-            iteration.workItemsWithoutSPs, iteration.workItemsWithoutACs, iteration.spComplete, iteration.spTotal])
+          const entry = columns.reduce((acc, column) => {
+            acc.push(iteration[column.id])
+            return acc
+          }, [])
+          table.push(entry)
         })
-  
         console.log(table.render())
       }
 
