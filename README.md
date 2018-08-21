@@ -18,6 +18,7 @@ osio-stats --help
 ### Iterations
 
 1. Get stats about iterations in a space (uses default space _Openshift_io_) in a tabular form
+
 `osio-stats iterations`
 
 2. Exploring what various columns mean
@@ -47,6 +48,7 @@ Options:
   --help                Show help  [boolean]
 ```
 3. Filter items by particular type (focus on Stories here)
+
 `osio-stats iterations --include-item-types Story`
 
 4. Display only columns we are interested in
@@ -79,7 +81,9 @@ TIP: Use can pipe output to `pbcopy` command for output to appear in your clipbo
 Experimental feature at this point
 
 1. Get work items in the iteration
+
 `osio-status work-items 'Sprint 152'`
 
 2. Get work items of porticular type (_Story_) in the iteration
+
 `osio-status work-items 'Sprint 152' --include-item-types Story`
