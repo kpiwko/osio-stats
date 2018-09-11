@@ -1,0 +1,9 @@
+<html>
+  <head>
+    <title>{{title}}</title>
+    <style>{{{css}}}</style>
+  </head>
+  <body>
+    {{>content}}
+  </body>
+</html>

@@ -24,7 +24,7 @@ const handler = function(argv) {
 
   const planner = new Planner()
 
-  const query = andQuery(argv.iteration, argv.includeItemTypes)
+  const query = andQuery(argv.iteration, argv['include-item-types'])
   
   planner.search(query, argv.space)
     .then(workItems => {

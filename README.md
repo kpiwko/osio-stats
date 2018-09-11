@@ -64,7 +64,16 @@ osio-metrics git:(master) ✗ osio-stats iterations --include-item-types Story -
 ...
 ```
 
-TIP: Use can pipe output to `pbcopy` command for output to appear in your clipboard
+6. Output as HTML
+```
+osio-metrics git:(master) ✗ osio-stats iterations --html
+<html>
+  <head>
+    <title>OpenShift.io Iterations Statistics</title>
+...    
+```
+
+TIP: Use can pipe output to `pbcopy` command for output to appear in your clipboard or you can redirect it to file via `> filename.html'
 
 ### Workitems
 

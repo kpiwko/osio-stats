@@ -1,6 +1,6 @@
 {
   "name": "osio-stats",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Stats for OpenShift.io project(s) gathered from Planner",
   "main": "index.js",
   "bin": {
@@ -21,10 +21,12 @@
   "homepage": "https://github.com/openshiftio/openshiftio-stats#readme",
   "dependencies": {
     "@types/request": "^2.47.1",
+    "bootstrap": "^4.1.3",
     "chalk": "^2.4.1",
     "cli-table": "^0.3.1",
     "flat": "^4.1.0",
     "json2csv": "^4.2.1",
+    "mustache": "^2.3.2",
     "prettyjson": "^1.2.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
@@ -34,5 +36,8 @@
   },
   "engines": {
     "node": ">=8"
+  },
+  "yargs": {
+    "camel-case-expansion": false
   }
 }

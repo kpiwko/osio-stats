@@ -23,6 +23,14 @@ const cli = function() {
       describe: 'Print out query outcome in Tab Separated Value format',
       default: false
     })
+    .option('json', {
+      describe: 'Print out query outcome in JSON format',
+      default: false
+    })
+    .option('html', {
+      describe: 'Print out query outcome is HTML format',
+      default: false
+    })
     .help('help')
     .version()
     //.wrap(null)

@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>OpenShift.io Iterations Statistics</h1>
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        {{#columns}}
+          <td>{{title}}</td>
+        {{/columns}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#data}}
+        <tr>
+          {{{.}}}
+        </tr>
+      {{/data}}
+    </tbody>
+  </table>
+  <h2>Legend</h2>
+  <p>
+    Description of columns used in the table
+  </p>
+  <ul>
+    {{#dts}}
+      <li>
+        <b>{{title}}</b> -- {{description}}
+      </li>
+    {{/dts}}
+  </ul>
+  <h2>Metadata</h2>
+  <p>
+    Generated on {{date}} via <a href="https://github.com/kpiwko/osio-stats">openshift.io stats</a>.
+  </p>
+  <p>
+    Arguments: <code>{{metadata}}</code>
+  </p>
+</div>
