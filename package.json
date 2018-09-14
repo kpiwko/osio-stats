@@ -1,10 +1,10 @@
 {
   "name": "osio-stats",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Stats for OpenShift.io project(s) gathered from Planner",
   "main": "index.js",
   "bin": {
-    "osio-stats": "./index.js"
+    "osio-stats": "./bin/osio-stats"
   },
   "repository": {
     "type": "git",
